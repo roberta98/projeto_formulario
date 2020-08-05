@@ -2,8 +2,10 @@
   <row :glutter="12" id="app">
     <column id="container">
       <newImage :url='default_image'/>
-    </column  >
-    <Login />
+      <div id="form">
+        <Login />
+      </div>
+    </column>
   </row>
 </template>
 
@@ -13,6 +15,9 @@ import Image from './components/newImage.vue'
 import default_image from './assets/texture1.jpg'
 import Vue from 'vue';
 import { Row, Column } from 'vue-grid-responsive'
+import VueMask from 'v-mask'
+
+Vue.use(VueMask);
 
 Vue.component('row', Row);
 Vue.component('column', Column);
@@ -24,8 +29,8 @@ export default {
     newImage : Image,
   },
   data : () => {
-    return { 
-      default_image
+    return {
+      default_image,
     }
   }
 }
@@ -37,12 +42,18 @@ export default {
   padding: 0;
   box-sizing: border-box;
 }
-#app {
+#container {
   width: 1920px;
   margin: 0 auto;
-}
-#container {
   display: block;
   position: relative;
 }
+#form{
+    width: 600px;
+    background-color: #714b36;
+    height: auto;
+    position: relative;
+    margin: 0 auto;
+}
+
 </style>
